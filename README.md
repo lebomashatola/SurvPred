@@ -1,97 +1,122 @@
-# GeTopology - Bimodal Phenotype Prediction
+# **GeTopology**  
+**Bimodal Phenotype Prediction from Multi-Modal Data**  
+A tool combining **topological data analysis (TDA)**, **machine learning**, and **multi-modal data processing** (RNA-Seq, microarray, histopathology) to predict biological 
+phenotypes.
 
-## Description
+---
 
-GeTopology processes RNA-Seq files (.fastq), microarray files (.CEL) and tissue slide images (.SVS), performs shape encoding of gene expression data from TDA, and performs predictive learning tasks using a bimodal approach with convolutional and multilayer perceptron neural networks to predict phenotypes. 
+## 🧠 **Overview**  
+GeTopology processes:  
+- RNA-Seq (`.fastq`)  
+- Microarray (`.CEL`)  
+- Tissue slides (`.SVS`)  
 
-## Getting Started
+It uses **topological shape encoding** of gene expression data and **bimodal predictive learning** (CNN + MLP) to classify phenotypes from multi-modal datasets.
 
-### Programming Languages Required
+---
 
-* Python >= 3.9 
-* R >= 4.0
+## 🧰 **Requirements**  
+### **Programming Languages**  
+- Python ≥ 3.9  
+- R ≥ 4.0  
 
-### Required Software
+### **Software**  
+- Linux/MacOS  
+- [FastQC](https://www.bioinformatics.babraham.ac.uk/projects/fastqc/) 0.12.0  
+- [Trimmomatics](http://www.usadellab.org/cms/?page=trimmomatic) 0.36  
+- [STAR](https://github.com/alexdobin/STAR) 2.7.11a  
+- [HTSeq](https://htseq.readthedocs.io/en/master/install.html) 2.0.3  
 
-* Linux/MacOS
-* FastQC 0.12.0 [https://www.bioinformatics.babraham.ac.uk/projects/fastqc/](https://www.bioinformatics.babraham.ac.uk/projects/fastqc/)
-* Trimmomatics 0.36 [http://www.usadellab.org/cms/?page=trimmomatic](http://www.usadellab.org/cms/?page=trimmomatic)
-* STAR 2.7.11a [https://github.com/alexdobin/STAR](https://github.com/alexdobin/STAR)
-* HTSeq 2.0.3 [https://htseq.readthedocs.io/en/master/install.html](https://htseq.readthedocs.io/en/master/install.html)
+---
 
-### Installing Dependencies
-
-
-```
+## 📦 **Installation**  
+```bash
+# Install Python dependencies
 python -m pip install -r requirements.txt
-```
 
-```
+# Install R dependencies
 Rscript requirements.r
 ```
 
-### Executing program
-## Data Processing
-* Image Processing - Image Segmentation and Tiling
-```
+---
+
+## 🚀 **Workflow**  
+### **1. Data Processing**  
+```bash
+# Image Processing (Segmentation & Tiling)
 python Image_Processing.py
-```
-* Microarray Processing - RMA normalization of CEL files, forming a Gene Expression Matrix (Only GPL570)
-```
+
+# Microarray (RMA normalization for GPL570 CEL files)
 python run_cels.py
-```
 
-* RNA-Seq Processing - Process .fastq files
-```
+# RNA-Seq (Process .fastq files)
 python RNA-Seq_Processing.py
-```
 
-* RNA-Seq Processing - Combining HTSeq counts forming a Gene Expression Matrix
-```
+# Combine HTSeq counts into a Gene Expression Matrix
 python Expression_Counts.py
 ```
-## Gene Preselection
 
-* Deseq2/Limma - WGCNA
-```
+### **2. Gene Preselection**  
+```bash
+# WGCNA with Deseq2/Limma
 python run_preselection.py
 ```
 
-## Data Encoding
-
-* Topological Data Analysis
-```
+### **3. Data Encoding**  
+```bash
+# Topological Data Analysis (Persistent Homology)
 python generate_persistent_diagrams_images.py
 ```
 
-## Predictive Learning 
-
-* Topological Summaries Classification - Multilayer Perceptron
-```
+### **4. Predictive Learning**  
+```bash
+# Topological Summaries → MLP
 python phenotype_prediction.py
-```
 
-* Image Classification - Convolutional Neural Networks
-```
+# Image Classification → CNN
 python MobileNet.py
-```
 
-* Bimodal Classification (MLP & CNN)
-```
+# Bimodal Classification (MLP + CNN)
 python integrate.py
 ```
 
-## Authors
+---
 
-Contributors names and contact info
+## 🧪 **Example Use Case**  
+1. Process RNA-Seq and microarray data to generate gene expression matrices.  
+2. Use TDA to extract topological features from gene expression.  
+3. Train a CNN on histopathology images and an MLP on gene expression data.  
+4. Combine results using a bimodal model to predict tumor subtypes or disease states.
 
-Lebohang Mashatola  [681452@students.wits.ac.za](681452@students.wits.ac.za)
+---
 
-Mandeep kaur [Mandeep.Kaur@wits.ac.za](Mandeep.Kaur@wits.ac.za)
+## 🧑‍💻 **Authors**  
+- [Lebohang Mashatola](mailto:681452@students.wits.ac.za)  
+- [Mandeep Kaur](mailto:Mandeep.Kaur@wits.ac.za)  
 
-## Version History
+---
 
-* 0.1
-    * Initial Release
+## 📜 **Version History**  
+- **0.1**  
+  - Initial release with RNA-Seq, microarray, and image processing pipelines.  
+  - Bimodal phenotype prediction using CNN + MLP.  
 
+---
 
+## 📄 **License**  
+[MIT License](LICENSE)  
+
+---
+
+## 🤝 **Contributing**  
+- Fork the repo and submit a pull request.  
+- Add your name to the `AUTHORS.md` file.  
+- Include test cases for new features.  
+
+---
+
+## 📌 **Notes**  
+- Ensure all dependencies are installed and paths are correctly configured.  
+- For advanced use, customize preprocessing pipelines in `run_preselection.py` and `integrate.py`.  
+
+---
